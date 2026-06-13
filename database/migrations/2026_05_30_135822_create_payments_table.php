@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('method');
             $table->string('status');
             $table->timestamp('paid_at')->nullable();
+            $table->timestamps();
         });
     }
 
