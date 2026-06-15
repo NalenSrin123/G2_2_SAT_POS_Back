@@ -1,17 +1,15 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\Auth\UserController; 
 use App\Http\Controllers\Api\Auth\PasswordResetController;
-use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\Auth\ResetPasswordController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use Mockery\Generator\StringManipulation\Pass\Pass;
+
+// Authentication & OTP Routes
 Route::post('/login', [AuthController::class, 'login']);
-
-
-Route::post('/verify-otp', [PasswordResetController::class, 'verifyOtp']);
 Route::post('/forgot-password', [PasswordResetController::class, 'sendOtp']);
+Route::post('/verify-otp', [PasswordResetController::class, 'verifyOtp']);
 Route::post('/reset-password', [PasswordResetController::class, 'resetPassword']);
+
+// User CRUD Routes
+Route::apiResource('users', UserController::class);
