@@ -17,6 +17,13 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('role'); // only admin
+
+            // crucial 
+             $table->string('otp')->nullable();
+             $table->timestamp('otp_expires_at')->nullable();
+             $table->boolean('is_verified')->default(false);
+
             $table->rememberToken();
             $table->timestamps();
         });
