@@ -51,61 +51,31 @@ class PasswordResetController extends Controller
                     ->subject('Password Reset OTP');
 
         });
-
-
-
         return response()->json([
 
                'message' => 'OTP sent successfully'
-
         ]);
 
     }
-
     public function verifyOtp(Request $request)
-
     {
-
         $request->validate([
-
            'email' => 'required|email',
-
            'otp' => 'required'
-
         ]);
-
-
-
         $record = DB::table('password_resets_otps')
-
         ->where('email', $request->email)
-
         ->where('otp', $request->otp)
-
         ->first();
-
-
-
         if(!$record){
-
            return response()->json(['message' => 'Invalid OTP'], 400);
-
         }
-
-
-
         if(Carbon::now()->gt($record->expires_at)){
-
             return response()->json(['message' => 'OTP expired'], 400);
-
         }
-
         return response()->json([
-
           'message' => 'OTP verified successfully'
-
         ]);
-
     }
 
 
