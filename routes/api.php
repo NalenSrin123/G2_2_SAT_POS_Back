@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Api\Auth\UserController; 
 use App\Http\Controllers\Api\Auth\PasswordResetController;
+use App\Http\Controllers\Api\TableController;
 
 // Authentication & OTP Routes
 Route::post('/login', [AuthController::class, 'login']);
@@ -35,3 +36,4 @@ Route::post('/reset-password', [PasswordResetController::class, 'resetPassword']
 
 // User CRUD Routes
 Route::apiResource('users', UserController::class);
+Route::apiResource('tables', TableController::class);
