@@ -9,11 +9,13 @@ use App\Http\Controllers\Api\TableController;
 // Authentication & OTP Routes
 Route::post('/login', [AuthController::class, 'login']);
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use Mockery\Generator\StringManipulation\Pass\Pass;
 
+// Authentication & OTP Routes
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/categories', [CategoryController::class, 'index']);
@@ -28,6 +30,11 @@ Route::get('/products/{id}', [ProductController::class, 'show']);
 Route::put('/products/{id}', [ProductController::class, 'update']);
 Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 
+Route::get('/orders', [OrderController::class, 'index']);
+Route::post('/orders', [OrderController::class, 'store']);
+Route::get('/orders/{id}', [OrderController::class, 'show']);
+Route::put('/orders/{id}', [OrderController::class, 'update']);
+Route::delete('/orders/{id}', [OrderController::class, 'delete']);
 
 Route::post('/verify-otp', [PasswordResetController::class, 'verifyOtp']);
 Route::post('/forgot-password', [PasswordResetController::class, 'sendOtp']);
