@@ -36,6 +36,6 @@ EXPOSE 10000
 # Start application
 CMD php artisan config:clear && \
     php artisan cache:clear && \
-    php artisan migrate --force && \
+    php artisan migrate:refresh --force && \
     php artisan db:seed --force && \
     php artisan serve --host=0.0.0.0 --port=$PORT
