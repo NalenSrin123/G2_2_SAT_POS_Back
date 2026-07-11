@@ -71,7 +71,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'name'     => 'sometimes|required|string|max:255',
             'email'    => ['sometimes', 'required', 'email', Rule::unique('users')->ignore($user->id)],
-            'password' => 'sometimes|required|string|min:6',
+             'password' => 'sometimes|required|string|min:6',
             'role'     => 'sometimes|required|string'
         ]);
 
